@@ -29,7 +29,6 @@ module.exports = phase => {
     experimental: {
       appDir: true,
     },
-    poweredByHeader: false,
     reactStrictMode: true,
     swcMinify: true,
   };

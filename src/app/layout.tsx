@@ -1,5 +1,7 @@
 import '@/styles/global.css';
 
+import FilesProvider from '@/components/providers/FilesProvider';
+
 export const metadata = {
   title: '3dverse Test',
   manifest: '/site.webmanifest',
@@ -20,9 +22,11 @@ export type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps): JSX.Element | null {
   return (
-    <html data-theme="night" lang="en">
+    <html data-theme="winter" lang="en">
       <body>
-        <div className="container mx-auto max-w-sm text-center">{children}</div>
+        <FilesProvider>
+          <div className="container mx-auto my-8 max-w-3xl text-center">{children}</div>
+        </FilesProvider>
       </body>
     </html>
   );
