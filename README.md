@@ -32,9 +32,14 @@ The transform feature is displayed as a link with hardcoded arguments, but keep 
 >
 > The performance of the database you choose will not be taken into account for this evaluation. ⚠️
 
-### Transform and Download feature
+## Interfacing your API with the existing Web App
 
-The **Transform** a special functionality that will transform each vertices in the file with a given scale and translation vector.
+Modify the arguments passed to each function in `./src/api/functions.ts`.
+Look for `// Todo:` comments or `<replace-me>` placeholders.
+
+## Transform and Download feature
+
+The **Transform and Download** is a special functionality that will transform each vertices in the file with a given scale and translation vector.
 
 For example with an _obj_ the vertices are described like this:
 
@@ -63,12 +68,16 @@ v 20 10 10
 
 > ⚠️ The transformed file should not alter the original file stored on the server! ⚠️
 
+## Example `obj` files
+
+You can find some `obj` files ready to use in the `./examples` directory.
+
 ## Toolchain
 
 - [nodejs](https://nodejs.org): `>=18`
 - [npm](https://www.npmjs.com): `>=9`
 
-## How to
+## How to use
 
 ```sh
 npm install
