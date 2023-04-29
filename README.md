@@ -70,7 +70,13 @@ v 20 10 10
 
 ## Example `obj` files
 
-You can find some `obj` files ready to use in the `./examples` directory.
+You can find some `obj` files ready to use from the following links:
+
+- [buggy.obj](https://storage.googleapis.com/corp-dev-challenge-3dfilestore-assets/buggy.obj)
+- [engine.obj](https://storage.googleapis.com/corp-dev-challenge-3dfilestore-assets/engine.obj)
+- [starwarsjuggeren.obj](https://storage.googleapis.com/corp-dev-challenge-3dfilestore-assets/starwarsjuggeren.obj)
+- [teapot.obj](https://storage.googleapis.com/corp-dev-challenge-3dfilestore-assets/teapot.obj)
+- [whale.obj](https://storage.googleapis.com/corp-dev-challenge-3dfilestore-assets/whale.obj)
 
 ## Toolchain
 
