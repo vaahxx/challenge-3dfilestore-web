@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "file_storage" ALTER COLUMN "creation_date" SET DEFAULT CURRENT_TIMESTAMP,
+ALTER COLUMN "creation_date" SET DATA TYPE TIMESTAMP(6);

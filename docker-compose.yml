@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: '3dverse'
+      POSTGRES_PASSWORD: '12345'
+      POSTGRES_DB: '3dverse'
+    ports:
+      - '5432:5432'
