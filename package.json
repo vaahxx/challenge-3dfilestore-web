@@ -34,6 +34,7 @@
     "lint:tsc": "tsc --noEmit",
     "prepare": "husky install",
     "start": "next start",
+    "dev": "next dev",
     "start:debug": "cross-env NODE_OPTIONS=\"--inspect --max_old_space_size=4096\" next dev",
     "start:w": "cross-env NODE_OPTIONS=--max_old_space_size=4096 next dev",
     "version": "node --print process.env.npm_package_version"
