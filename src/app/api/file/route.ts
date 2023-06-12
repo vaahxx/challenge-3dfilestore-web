@@ -84,7 +84,7 @@ export async function DELETE(request: Request) {
 
   if (deletedFile) {
     try {
-      await deleteFile(`${deletedFile.url}`);
+      await deleteFile(deletedFile.url);
       return NextResponse.json(deletedFile, {
         status: 200,
       });
