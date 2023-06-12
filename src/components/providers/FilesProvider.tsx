@@ -1,6 +1,6 @@
 'use client';
-import * as api from '@/api/functions';
-import { ObjFile } from '@/api/functions';
+import * as api from '@/app/api/functions';
+import { ObjFile } from '@/app/api/functions';
 import React, { createContext, useCallback, useContext } from 'react';
 import useMiddlewaredReducer from '../hooks/useMiddlewaredReducer';
 import Logger from './middlewares/logger';

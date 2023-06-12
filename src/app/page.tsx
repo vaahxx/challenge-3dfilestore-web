@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react';
 import { FaDownload, FaEdit, FaSave, FaTrash } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { twMerge } from 'tailwind-merge';
-import { ObjFile, downloadFile } from '../api/functions';
+import { ObjFile, downloadFile } from './api/functions';
 import Image from 'next/image';
-import { transformFile } from '../api/functions';
+import { transformFile } from './api/functions';
 
 export default function HomePage(): JSX.Element {
   const [editedFile, setEditedFile] = useState<ObjFile | null>(null);
