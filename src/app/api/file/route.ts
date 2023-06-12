@@ -58,6 +58,7 @@ export async function PATCH(request: Request) {
       status: 200,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         message: 'Failed to rename file.',
@@ -83,7 +84,7 @@ export async function DELETE(request: Request) {
 
   if (deletedFile) {
     try {
-      await deleteFile(`${deletedFile.url}.obj`);
+      await deleteFile(`${deletedFile.url}`);
       return NextResponse.json(deletedFile, {
         status: 200,
       });
@@ -101,7 +102,7 @@ export async function DELETE(request: Request) {
 
   return NextResponse.json(
     {
-      message: 'Failed to delete file.',
+      message: 'Failed to delete file - file not found.',
     },
     {
       status: 500,
