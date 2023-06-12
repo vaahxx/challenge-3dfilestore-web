@@ -46,3 +46,5 @@ package/
 *.tsbuildinfo
 next-env.d.ts
 !*.example
+
+obj_files
