@@ -4,11 +4,13 @@ import path from 'path';
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import { promisify } from 'util';
-import { retrieveUploadedFileFromFormData } from './helpers';
+import { parseBody, retrieveUploadedFileFromFormData } from './utils';
 
 const prisma = new PrismaClient();
 
 const uploadDir = path.join(process.cwd(), 'obj_files');
+
+//-----------------------------------------------------------------------------
 
 export async function POST(request: Request) {
   try {
@@ -33,15 +35,28 @@ export async function POST(request: Request) {
   }
 }
 
+//-----------------------------------------------------------------------------
+
 export async function PATCH(request: Request) {
-  const url = new URL(request.url);
-  const id = url.searchParams.get('id') ?? undefined;
-  const newName = url.searchParams.get('name') ?? undefined;
+  const parsedBody = await parseBody<{ id: string; name: string }>(request);
+
+  if (!parsedBody) {
+    return NextResponse.json(
+      {
+        message: 'Invalid request body.',
+      },
+      {
+        status: 400,
+      },
+    );
+  }
+
+  const { id, name } = parsedBody;
 
   try {
     const updatedFile = await prisma.file_storage.update({
       where: { id },
-      data: { name: newName },
+      data: { name },
     });
 
     if (!updatedFile) {
@@ -58,7 +73,6 @@ export async function PATCH(request: Request) {
       status: 200,
     });
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       {
         message: 'Failed to rename file.',
@@ -71,6 +85,8 @@ export async function PATCH(request: Request) {
     await prisma.$disconnect();
   }
 }
+
+//-----------------------------------------------------------------------------
 
 const deleteFile = promisify(fs.unlink);
 
@@ -110,6 +126,8 @@ export async function DELETE(request: Request) {
   );
 }
 
+//-----------------------------------------------------------------------------
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const id = url.searchParams.get('id') ?? undefined;
@@ -146,9 +164,3 @@ export async function GET(request: Request) {
     await prisma.$disconnect();
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};

@@ -36,11 +36,14 @@ export async function getFile(fileId: string): Promise<ObjFile> {
 }
 
 //-----------------------------------------------------------------------------
-export async function renameFile(fileId: string, newName: string): Promise<ObjFile> {
-  // TODO: Replace theses arguments with the correct ones
+export async function renameFile(fileId: string, name: string): Promise<ObjFile> {
   const res = await apiClient.request<ObjFile>({
     method: 'PATCH',
-    url: `/api/file?id=${fileId}&name=${newName}`,
+    url: `/api/file?id=${fileId}`,
+    data: {
+      id: fileId,
+      name,
+    },
   });
   return res.data;
 }
