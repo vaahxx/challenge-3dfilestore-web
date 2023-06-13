@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import path from 'path';
 import { iteratorToStream, makeIterator } from '@/app/utils/stream-utils';
 
 const prisma = new PrismaClient();
@@ -23,8 +22,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const filePath = path.join(process.cwd(), `obj_files/${id}.obj`);
-  const iterator = makeIterator(filePath);
+  const iterator = makeIterator(file.url);
   const stream = iteratorToStream(iterator);
 
   return new Response(stream, {
