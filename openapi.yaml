@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  title: 3D File Repository API
+  description: API documentation for a 3D file repository web application
+  version: 1.0.0
+
+paths:
+  /api/files:
+    get:
+      summary: Retrieve all files
+      description: Returns a list of all 3D files available in the repository.
+      responses:
+        '200':
+          description: A list of files retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/File'
+
+  /api/file:
+    get:
+      summary: Retrieve a specific file
+      description: Returns detailed information about a specific 3D file.
+      parameters:
+        - name: id
+          in: query
+          description: ID of the file to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File information retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '400':
+          description: File not found.
+
+    patch:
+      summary: Update a file name
+      description: Renames a specified 3D file.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenameFile'
+
+      responses:
+        '200':
+          description: File updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '400':
+          description: File not found.
+
+    delete:
+      summary: Delete a file
+      description: Deletes the specified 3D file from the repository.
+      parameters:
+        - name: id
+          in: query
+          description: ID of the file to delete.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '400':
+          description: File not found.
+
+    post:
+      summary: Upload a file
+      description: Uploads a 3D file to the repository.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+
+      responses:
+        '200':
+          description: File uploaded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+
+  /api/download:
+    get:
+      summary: Download a file
+      description: Downloads the specified 3D file from the repository.
+      parameters:
+        - name: id
+          in: query
+          description: ID of the file to download.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File downloaded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+
+  /api/transform:
+    get:
+      summary: Download transformed file
+      description: Downloads a transformed version of the specified 3D file from the repository.
+      parameters:
+        - name: id
+          in: query
+          description: ID of the file to download.
+          required: true
+          schema:
+            type: string
+        - name: scale_x
+          in: query
+          description: Scaling factor for the X-axis.
+          required: true
+          schema:
+            type: number
+        - name: scale_y
+          in: query
+          description: Scaling factor for the Y-axis.
+          required: true
+          schema:
+            type: number
+        - name: scale_z
+          in: query
+          description: Scaling factor for the Z-axis.
+          required: true
+          schema:
+            type: number
+        - name: offset_x
+          in: query
+          description: Offset value for the X-axis.
+          required: true
+          schema:
+            type: number
+        - name: offset_y
+          in: query
+          description: Offset value for the Y-axis.
+          required: true
+          schema:
+            type: number
+        - name: offset_z
+          in: query
+          description: Offset value for the Z-axis.
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Transformed file downloaded successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+
+components:
+  schemas:
+    File:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the file.
+          example: dd588e10-5bd6-445a-bd7e-8c909b2ac4ad
+        name:
+          type: string
+          description: Name of the file.
+          example: example
+        size:
+          type: integer
+          description: Size of the file in bytes.
+          example: 156
+        creation_date:
+          type: string
+          format: date-time
+          description: Date and time when the file was uploaded.
+    RenameFile:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the file.
+          example: dd588e10-5bd6-445a-bd7e-8c909b2ac4ad
+        name:
+          type: string
+          description: Name of the file.
+          example: new name
