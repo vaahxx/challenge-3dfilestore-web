@@ -16,6 +16,10 @@ This is a web application for managing and storing 3D files. It provides a RESTf
 - File Management: You can upload, download, update, and delete 3D files in the repository.
 - Download and Transform: You can download both the original and transformed versions of a 3D file.
 
+## OpenAPI Specification
+
+The project includes an OpenAPI specification file named `openapi.yaml`. This file describes the API endpoints, request/response schemas, and other related information. You can refer to this file for a detailed overview of the API.
+
 ## Challenges Faced with Streams
 
 Working with streams presented some challenges during the development process. Due to time restrictions, the upload endpoint was not implemented using streams. This endpoint currently consumes a significant amount of memory, which needs improvement. However, the download and transform endpoints function as expected.
@@ -32,15 +36,6 @@ Due to time limitations, not all planned features were implemented. If I had mor
 
 ## Running the Application
 
-To run the application locally, follow these steps:
-
-1. Clone the repository
-2. Install dependencies with `npm i`
-3. Start the development server with `npm run dev` as `npm run start` does not work and I didn't have time to address this problem
-4. Open your web browser and visit `http://localhost:3000` to access the application.
-
-## Database Configuration
-
 This application uses PostgreSQL as the database. The database is containerized using Docker. 
 
 The connection details for the PostgreSQL database are as follows:
@@ -49,9 +44,19 @@ The connection details for the PostgreSQL database are as follows:
 - Port: `5432`
 - Database: `3dverse`
 - Username: `postgres`
-- Password: `mysecretpassword` (replace with your chosen password)
+- Password: `12345` (replace with your chosen password)
 
-You can modify the database configuration in the `docker-compose.yml` file located in the project.
+Rename `.env.example` file to `.env`. You can modify the database configuration in the `docker-compose.yml` file located in the project.
+
+To run the application locally, follow these steps:
+
+1. Clone the repository
+2. Install dependencies with `npm i`
+1. Start the service defined in the Docker Compose file with `docker-compose up -d` 
+2. Apply migrations with `npx prisma migrate dev` 
+3. Generate the Prisma Client with `npx prisma generate` 
+4. Start the development server with `npm run dev` as `npm run start` does not work and I didn't have time to address this problem
+5. Open your web browser and visit `http://localhost:3000` to access the application.
 
 ## Final Thoughts
 
@@ -60,6 +65,7 @@ I would like to acknowledge the help I received from Alex in correcting my trans
 It was a great experience working on this project and exploring Next.js and stream handling. Although there were time constraints and other commitments (I had to do another coding challenge in the meantime), I appreciate the opportunity and what I have learned throughout this process.
 
 For any questions or clarifications, please feel free to reach out.
+
 Thank you for considering my submission!
 
 Best,
