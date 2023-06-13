@@ -52,7 +52,7 @@ export async function GET(request: Request) {
     const randomId = randomUUID();
 
     let buffer = '';
-    tempFilePath = `${savedFile.id}_${randomId}_transformed.obj`;
+    tempFilePath = `obj_files/${savedFile.id}_${randomId}_transformed.obj`;
 
     const tempFileStream = fs.createWriteStream(tempFilePath, {
       highWaterMark: 1024 * 1024,
