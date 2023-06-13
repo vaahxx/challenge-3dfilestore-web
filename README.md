@@ -1,3 +1,60 @@
+# 3D File Repository Web Application
+
+This is a web application for managing and storing 3D files. It provides a RESTful API for uploading, downloading, and transforming 3D files in OBJ format. Below are the available endpoints and their features:
+
+## Endpoints
+
+- `GET /api/files`: Retrieves a list of all 3D files available in the repository.
+- `PATCH /api/file`: Updates the name of a specific 3D file.
+- `DELETE /api/file?id=${fileId}`: Deletes a specific 3D file from the repository.
+- `GET /api/download?id=${fileId}`: Downloads a specific 3D file from the repository.
+- `POST /api/upload`: Uploads a 3D file (OBJ format) to the repository.
+- `GET /api/transform?id=${fileId}&scale_x=${scale.x}&scale_y=${scale.y}&scale_z=${scale.z}&offset_x=${offset.x}&offset_y=${offset.y}&offset_z=${offset.z}`: Downloads a transformed version of a specific 3D file from the repository.
+
+## Features
+
+- File Management: You can upload, download, update, and delete 3D files in the repository.
+- File Transformation: The API allows you to transform 3D files by applying scaling and offset transformations.
+- Download and Transform: You can download both the original and transformed versions of a 3D file.
+
+## Challenges Faced with Streams
+
+Working with streams presented some challenges during the development process. Due to time restrictions, the upload endpoint was not implemented using streams. This endpoint currently consumes a significant amount of memory, which needs improvement. However, the download and transform endpoints function as expected.
+
+## Comments and Pending Improvements
+
+In the code, you will find comments that highlight important functions. 
+
+Due to time limitations, not all planned features were implemented. If I had more time, the following improvements would be made:
+
+- Implement stream-based upload endpoint to optimize memory usage.
+- Include a progress bar on the front-end to visualize file upload progress.
+- Implement a file size limit for uploading files.
+
+## Running the Application
+
+To run the application locally, follow these steps:
+
+1. Clone the repository
+2. Install dependencies with `npm i`
+3. Start the development server with `npm run dev` as `npm run start` does not work and I didn't have time to address this problem
+4. Open your web browser and visit `http://localhost:3000` to access the application.
+
+## Final Thoughts
+
+I would like to acknowledge the help I received from Alex in correcting my transform file algorithm. His assistance was valuable in achieving the desired functionality.
+
+It was a great experience working on this project and exploring Next.js and stream handling. Although there were time constraints and other commitments (I had to do another coding challenge in the meantime), I appreciate the opportunity and what I have learned throughout this process.
+
+For any questions or clarifications, please feel free to reach out.
+Thank you for considering my submission!
+
+Best,
+
+Valentina
+
+_______________________________________
+
 # Challenge 3dfilestore Web
 
 In this challenge, you will design the REST API and implement the backend features of a 3D file repository web application. The frontend of the web application is provided.
