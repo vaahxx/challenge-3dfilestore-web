@@ -1,6 +1,6 @@
 # 3D File Repository Web Application
 
-This is a web application for managing and storing 3D files. It provides a RESTful API for uploading, downloading, and transforming 3D files in OBJ format. Below are the available endpoints and their features:
+This is a web application for managing and storing 3D files. It provides a RESTful API for managing 3D files in OBJ format. Below are the available endpoints and their features:
 
 ## Endpoints
 
@@ -14,7 +14,6 @@ This is a web application for managing and storing 3D files. It provides a RESTf
 ## Features
 
 - File Management: You can upload, download, update, and delete 3D files in the repository.
-- File Transformation: The API allows you to transform 3D files by applying scaling and offset transformations.
 - Download and Transform: You can download both the original and transformed versions of a 3D file.
 
 ## Challenges Faced with Streams
