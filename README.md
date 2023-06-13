@@ -40,6 +40,20 @@ To run the application locally, follow these steps:
 3. Start the development server with `npm run dev` as `npm run start` does not work and I didn't have time to address this problem
 4. Open your web browser and visit `http://localhost:3000` to access the application.
 
+## Database Configuration
+
+This application uses PostgreSQL as the database. The database is containerized using Docker. 
+
+The connection details for the PostgreSQL database are as follows:
+
+- Host: `localhost`
+- Port: `5432`
+- Database: `3dverse`
+- Username: `postgres`
+- Password: `mysecretpassword` (replace with your chosen password)
+
+You can modify the database configuration in the `docker-compose.yml` file located in the project.
+
 ## Final Thoughts
 
 I would like to acknowledge the help I received from Alex in correcting my transform file algorithm. His assistance was valuable in achieving the desired functionality.
